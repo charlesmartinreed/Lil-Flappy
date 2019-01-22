@@ -63,7 +63,7 @@ class GameScene: SKScene {
         playerBirb.physicsBody = SKPhysicsBody(circleOfRadius: birbTexture1.size().height / 2)
         playerBirb.physicsBody?.isDynamic = false //set to true when tap recognized
         playerBirb.physicsBody?.categoryBitMask = birbCategory
-        playerBirb.physicsBody?.contactTestBitMask = levelBoundsCategory
+        playerBirb.physicsBody?.contactTestBitMask = levelBoundsCategory | pipeCategory
         playerBirb.physicsBody?.collisionBitMask = 0
         
         addChild(playerBirb)
@@ -72,7 +72,7 @@ class GameScene: SKScene {
     func movePlayerSprite() {
         //fired when the tap is detected in the screen, via the Interface Controller
         playerBirb.physicsBody?.isDynamic = true
-        playerBirb.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 12))
+        playerBirb.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10))
     }
     
     func createLevelBackground() {
@@ -122,11 +122,15 @@ class GameScene: SKScene {
         let pipeTexture1 = SKTexture(imageNamed: "pipe1")
         let pipeTexture2 = SKTexture(imageNamed: "pipe2")
         
+        var pipes = [SKSpriteNode]()
+        
         //pipe animations
         let pipeAnimationDuration: TimeInterval = Double(self.frame.width) / 100
         let moveAndRemoveAnimation = SKAction.move(by: CGVector(dx: -2 * self.frame.width, dy: 0), duration: pipeAnimationDuration)
         
         let pipe1 = SKSpriteNode(texture: pipeTexture1)
+        pipe1.name = "top"
+        pipes.append(pipe1)
         pipe1.position = CGPoint(x: self.frame.midX + self.frame.width, y: self.frame.midY + pipeTexture1.size().height / 2 + gapHeight / 2 + pipeOffset) //offscreen, in the mid point
         pipe1.zPosition = 1
         pipe1.run(moveAndRemoveAnimation) {
@@ -136,6 +140,8 @@ class GameScene: SKScene {
         addChild(pipe1)
         
         let pipe2 = SKSpriteNode(texture: pipeTexture2)
+        pipe2.name = "bottom"
+        pipes.append(pipe2)
         pipe2.position = CGPoint(x: self.frame.midX + self.frame.width, y: -self.frame.midY - pipeTexture2.size().height / 2 - gapHeight / 2 + pipeOffset)
         pipe2.zPosition = 1
         pipe2.run(moveAndRemoveAnimation) {
@@ -145,7 +151,22 @@ class GameScene: SKScene {
         addChild(pipe2)
         
         //physics
+        for pipe in pipes {
+            if pipe.name == "top" {
+                pipe.physicsBody = SKPhysicsBody(rectangleOf: pipeTexture1.size())
+            } else if pipe.name == "bottom" {
+                pipe.physicsBody = SKPhysicsBody(rectangleOf: pipeTexture2.size())
+            }
+            
+            pipe.physicsBody?.isDynamic = false
+            pipe.physicsBody?.affectedByGravity = false
+            pipe.physicsBody?.categoryBitMask = pipeCategory
+            pipe.physicsBody?.contactTestBitMask = birbCategory
+            pipe.physicsBody?.collisionBitMask = 0
+        }
         
+        pipes.removeAll()
+
     }
     
     func createScoreLabel() {
