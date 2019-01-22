@@ -30,6 +30,8 @@ class InterfaceController: WKInterfaceController {
             // Use a value that will maintain a consistent frame rate
             self.skInterface.preferredFramesPerSecond = 30
             
+            
+            
         }
     }
     
@@ -44,6 +46,7 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
     }
     
     override func didDeactivate() {
