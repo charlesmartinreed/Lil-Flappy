@@ -15,7 +15,58 @@
 		8CA2603921F6826100F05F99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CA2603721F6826100F05F99 /* Main.storyboard */; };
 		8CA2603B21F6826300F05F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CA2603A21F6826300F05F99 /* Assets.xcassets */; };
 		8CA2603E21F6826300F05F99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CA2603C21F6826300F05F99 /* LaunchScreen.storyboard */; };
+		8CA2604B21F682B700F05F99 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CA2604921F682B700F05F99 /* Interface.storyboard */; };
+		8CA2604D21F682B800F05F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CA2604C21F682B800F05F99 /* Assets.xcassets */; };
+		8CA2605421F682B800F05F99 /* Lil Flappy Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8CA2605321F682B800F05F99 /* Lil Flappy Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8CA2605921F682B800F05F99 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2605821F682B800F05F99 /* InterfaceController.swift */; };
+		8CA2605B21F682B800F05F99 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8CA2605A21F682B800F05F99 /* GameScene.sks */; };
+		8CA2605D21F682B800F05F99 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2605C21F682B800F05F99 /* GameScene.swift */; };
+		8CA2605F21F682B800F05F99 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2605E21F682B800F05F99 /* ExtensionDelegate.swift */; };
+		8CA2606121F682B900F05F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CA2606021F682B900F05F99 /* Assets.xcassets */; };
+		8CA2606521F682B900F05F99 /* Lil Flappy Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8CA2604721F682B700F05F99 /* Lil Flappy Watch.app */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8CA2605521F682B800F05F99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CA2602221F6826100F05F99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CA2605221F682B800F05F99;
+			remoteInfo = "Lil Flappy Watch Extension";
+		};
+		8CA2606321F682B900F05F99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CA2602221F6826100F05F99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CA2604621F682B700F05F99;
+			remoteInfo = "Lil Flappy Watch";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8CA2606921F682B900F05F99 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8CA2605421F682B800F05F99 /* Lil Flappy Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CA2606D21F682B900F05F99 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				8CA2606521F682B900F05F99 /* Lil Flappy Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8CA2602A21F6826100F05F99 /* Lil Flappy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lil Flappy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,10 +79,28 @@
 		8CA2603A21F6826300F05F99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CA2603D21F6826300F05F99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CA2603F21F6826300F05F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CA2604721F682B700F05F99 /* Lil Flappy Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lil Flappy Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CA2604A21F682B700F05F99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		8CA2604C21F682B800F05F99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8CA2604E21F682B800F05F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CA2605321F682B800F05F99 /* Lil Flappy Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Lil Flappy Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CA2605821F682B800F05F99 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		8CA2605A21F682B800F05F99 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		8CA2605C21F682B800F05F99 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		8CA2605E21F682B800F05F99 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		8CA2606021F682B900F05F99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8CA2606221F682B900F05F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8CA2602721F6826100F05F99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CA2605021F682B800F05F99 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				8CA2602C21F6826100F05F99 /* Lil Flappy */,
+				8CA2604821F682B700F05F99 /* Lil Flappy Watch */,
+				8CA2605721F682B800F05F99 /* Lil Flappy Watch Extension */,
 				8CA2602B21F6826100F05F99 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				8CA2602A21F6826100F05F99 /* Lil Flappy.app */,
+				8CA2604721F682B700F05F99 /* Lil Flappy Watch.app */,
+				8CA2605321F682B800F05F99 /* Lil Flappy Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +146,29 @@
 			path = "Lil Flappy";
 			sourceTree = "<group>";
 		};
+		8CA2604821F682B700F05F99 /* Lil Flappy Watch */ = {
+			isa = PBXGroup;
+			children = (
+				8CA2604921F682B700F05F99 /* Interface.storyboard */,
+				8CA2604C21F682B800F05F99 /* Assets.xcassets */,
+				8CA2604E21F682B800F05F99 /* Info.plist */,
+			);
+			path = "Lil Flappy Watch";
+			sourceTree = "<group>";
+		};
+		8CA2605721F682B800F05F99 /* Lil Flappy Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8CA2605821F682B800F05F99 /* InterfaceController.swift */,
+				8CA2605A21F682B800F05F99 /* GameScene.sks */,
+				8CA2605C21F682B800F05F99 /* GameScene.swift */,
+				8CA2605E21F682B800F05F99 /* ExtensionDelegate.swift */,
+				8CA2606021F682B900F05F99 /* Assets.xcassets */,
+				8CA2606221F682B900F05F99 /* Info.plist */,
+			);
+			path = "Lil Flappy Watch Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,15 +179,51 @@
 				8CA2602621F6826100F05F99 /* Sources */,
 				8CA2602721F6826100F05F99 /* Frameworks */,
 				8CA2602821F6826100F05F99 /* Resources */,
+				8CA2606D21F682B900F05F99 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8CA2606421F682B900F05F99 /* PBXTargetDependency */,
 			);
 			name = "Lil Flappy";
 			productName = "Lil Flappy";
 			productReference = 8CA2602A21F6826100F05F99 /* Lil Flappy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8CA2604621F682B700F05F99 /* Lil Flappy Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CA2606A21F682B900F05F99 /* Build configuration list for PBXNativeTarget "Lil Flappy Watch" */;
+			buildPhases = (
+				8CA2604521F682B700F05F99 /* Resources */,
+				8CA2606921F682B900F05F99 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CA2605621F682B800F05F99 /* PBXTargetDependency */,
+			);
+			name = "Lil Flappy Watch";
+			productName = "Lil Flappy Watch";
+			productReference = 8CA2604721F682B700F05F99 /* Lil Flappy Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		8CA2605221F682B800F05F99 /* Lil Flappy Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CA2606621F682B900F05F99 /* Build configuration list for PBXNativeTarget "Lil Flappy Watch Extension" */;
+			buildPhases = (
+				8CA2604F21F682B800F05F99 /* Sources */,
+				8CA2605021F682B800F05F99 /* Frameworks */,
+				8CA2605121F682B800F05F99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Lil Flappy Watch Extension";
+			productName = "Lil Flappy Watch Extension";
+			productReference = 8CA2605321F682B800F05F99 /* Lil Flappy Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -104,6 +236,12 @@
 				ORGANIZATIONNAME = "Charles Martin Reed";
 				TargetAttributes = {
 					8CA2602921F6826100F05F99 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					8CA2604621F682B700F05F99 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					8CA2605221F682B800F05F99 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
@@ -122,6 +260,8 @@
 			projectRoot = "";
 			targets = (
 				8CA2602921F6826100F05F99 /* Lil Flappy */,
+				8CA2604621F682B700F05F99 /* Lil Flappy Watch */,
+				8CA2605221F682B800F05F99 /* Lil Flappy Watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -139,6 +279,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8CA2604521F682B700F05F99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CA2604D21F682B800F05F99 /* Assets.xcassets in Resources */,
+				8CA2604B21F682B700F05F99 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CA2605121F682B800F05F99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CA2606121F682B900F05F99 /* Assets.xcassets in Resources */,
+				8CA2605B21F682B800F05F99 /* GameScene.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -152,7 +310,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8CA2604F21F682B800F05F99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CA2605D21F682B800F05F99 /* GameScene.swift in Sources */,
+				8CA2605921F682B800F05F99 /* InterfaceController.swift in Sources */,
+				8CA2605F21F682B800F05F99 /* ExtensionDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8CA2605621F682B800F05F99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CA2605221F682B800F05F99 /* Lil Flappy Watch Extension */;
+			targetProxy = 8CA2605521F682B800F05F99 /* PBXContainerItemProxy */;
+		};
+		8CA2606421F682B900F05F99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CA2604621F682B700F05F99 /* Lil Flappy Watch */;
+			targetProxy = 8CA2606321F682B900F05F99 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8CA2603721F6826100F05F99 /* Main.storyboard */ = {
@@ -169,6 +350,14 @@
 				8CA2603D21F6826300F05F99 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8CA2604921F682B700F05F99 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CA2604A21F682B700F05F99 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -324,6 +513,84 @@
 			};
 			name = Release;
 		};
+		8CA2606721F682B900F05F99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Lil Flappy Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.charlesmartinreed.Lil-Flappy.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		8CA2606821F682B900F05F99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Lil Flappy Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.charlesmartinreed.Lil-Flappy.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		8CA2606B21F682B900F05F99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = Lil_Flappy_Watch_Extension;
+				INFOPLIST_FILE = "Lil Flappy Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.charlesmartinreed.Lil-Flappy.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		8CA2606C21F682B900F05F99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = Lil_Flappy_Watch_Extension;
+				INFOPLIST_FILE = "Lil Flappy Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.charlesmartinreed.Lil-Flappy.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -341,6 +608,24 @@
 			buildConfigurations = (
 				8CA2604321F6826300F05F99 /* Debug */,
 				8CA2604421F6826300F05F99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CA2606621F682B900F05F99 /* Build configuration list for PBXNativeTarget "Lil Flappy Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CA2606721F682B900F05F99 /* Debug */,
+				8CA2606821F682B900F05F99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CA2606A21F682B900F05F99 /* Build configuration list for PBXNativeTarget "Lil Flappy Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CA2606B21F682B900F05F99 /* Debug */,
+				8CA2606C21F682B900F05F99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
