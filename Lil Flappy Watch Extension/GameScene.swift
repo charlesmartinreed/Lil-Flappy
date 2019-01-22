@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var levelBG = SKSpriteNode()
     var playerScoreLabel = SKLabelNode()
     
+    var tapImpulseAmount = 12
     var backgroundAnimationDuration: TimeInterval = 3.0
     var pipeSpawnFrequency: TimeInterval = 1.5
     var pipeGenerationTimer: Timer!
@@ -72,7 +73,7 @@ class GameScene: SKScene {
     func movePlayerSprite() {
         //fired when the tap is detected in the screen, via the Interface Controller
         playerBirb.physicsBody?.isDynamic = true
-        playerBirb.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10))
+        playerBirb.physicsBody?.applyImpulse(CGVector(dx: 0, dy: tapImpulseAmount))
     }
     
     func createLevelBackground() {
@@ -114,7 +115,7 @@ class GameScene: SKScene {
     
     @objc func createLevelObstacles() {
         //pipe placement logic
-        let gapHeight = playerBirb.size.height * 3 //this will be used to size the area between the pipes/the area the user touches to gain a point
+        let gapHeight = playerBirb.size.height * 4 //this will be used to size the area between the pipes/the area the user touches to gain a point
         let movementAmount = arc4random() % UInt32(self.frame.height / 2)
         let pipeOffset = CGFloat(movementAmount) - self.frame.height / 4 //between -1/4 of the screen and 1/4 of the screen
         
@@ -165,7 +166,27 @@ class GameScene: SKScene {
             pipe.physicsBody?.collisionBitMask = 0
         }
         
-        pipes.removeAll()
+        //MARK:- Scoring mechanics
+        //player hits invisible gap between pipes, player scores point
+        let gap = SKNode()
+        gap.name = "gap"
+        gap.position = CGPoint(x: self.frame.midX + self.frame.width, y: self.frame.midY + pipeOffset)
+        
+        //gap physics
+        gap.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: pipeTexture1.size().width / 2, height: gapHeight)) //this way, the player has to actually make it halfway through the pipe to get credit
+        gap.physicsBody?.affectedByGravity = false
+        gap.physicsBody?.isDynamic = false
+        gap.physicsBody?.categoryBitMask = gapCategory
+        gap.physicsBody?.contactTestBitMask = birbCategory
+        gap.physicsBody?.collisionBitMask = gapCategory //in practice, only the birb passes through here either way.
+        
+        //gap needs to animate alongside the pipes
+        gap.run(moveAndRemoveAnimation) {
+            gap.removeFromParent()
+        }
+        addChild(gap)
+        
+        pipes.removeAll() //clear the pipe array at the end of each call to this func
 
     }
     
@@ -186,7 +207,15 @@ class GameScene: SKScene {
 
 extension GameScene : SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        print("contact detected")
-        scene?.isPaused = true
+        
+        if contact.bodyA.categoryBitMask == gapCategory || contact.bodyB.categoryBitMask == gapCategory {
+            //score a point!
+            print("point scored!")
+            playerScore += 1
+        } else {
+            print("game over")
+            scene?.isPaused = true
+        }
+        
     }
 }
