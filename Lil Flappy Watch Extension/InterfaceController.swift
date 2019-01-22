@@ -38,8 +38,15 @@ class InterfaceController: WKInterfaceController {
     @IBAction func handleTap(tapGesture: WKTapGestureRecognizer) {
 
         if let scene = skInterface.scene as? GameScene {
-            print("tap detected!")
-            scene.movePlayerSprite()
+            if scene.isGameActive {
+                scene.movePlayerSprite()
+            } else {
+                //set the scene to active again so that our init func fires properly
+                scene.removeAllChildren()
+                scene.isGameActive = true
+                scene.initGameScene()
+            }
+            
         }
     }
     

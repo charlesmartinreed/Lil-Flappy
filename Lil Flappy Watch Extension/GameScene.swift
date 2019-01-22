@@ -14,10 +14,11 @@ class GameScene: SKScene {
     var playerBirb = SKSpriteNode()
     var levelBG = SKSpriteNode()
     var playerScoreLabel = SKLabelNode()
+    var isGameActive: Bool!
     
     var tapImpulseAmount = 12
-    var backgroundAnimationDuration: TimeInterval = 3.0
-    var pipeSpawnFrequency: TimeInterval = 1.5
+    var backgroundAnimationDuration: TimeInterval = 5.0
+    var pipeSpawnFrequency: TimeInterval = 2.5
     var pipeGenerationTimer: Timer!
     
     var playerScore: Int = 0 {
@@ -34,19 +35,26 @@ class GameScene: SKScene {
     
     override func sceneDidLoad() {
         
+        isGameActive = true
         initGameScene()
         physicsWorld.contactDelegate = self
 
     }
     
     func initGameScene() {
-        createPlayerSprite()
-        createLevelBackground()
-        createLevelBounds()
-        createScoreLabel()
-        
-        //start the pipe generation timer
-        pipeGenerationTimer = Timer.scheduledTimer(timeInterval: pipeSpawnFrequency, target: self, selector: #selector(createLevelObstacles), userInfo: nil, repeats: true)
+        if isGameActive {
+            
+            scene?.isPaused = false
+            playerScore = 0
+            
+            createPlayerSprite()
+            createLevelBackground()
+            createLevelBounds()
+            createScoreLabel()
+            
+            //start the pipe generation timer
+            pipeGenerationTimer = Timer.scheduledTimer(timeInterval: pipeSpawnFrequency, target: self, selector: #selector(createLevelObstacles), userInfo: nil, repeats: true)
+        }
     }
     
     func createPlayerSprite() {
@@ -192,7 +200,7 @@ class GameScene: SKScene {
     
     func createScoreLabel() {
         playerScoreLabel.text = "\(playerScore)"
-        playerScoreLabel.fontName = "Helvetica"
+        playerScoreLabel.fontName = "AvenirNext-Bold"
         playerScoreLabel.fontColor = UIColor.white
         playerScoreLabel.fontSize = 48
         playerScoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.height / 2 - 50)
@@ -200,8 +208,19 @@ class GameScene: SKScene {
         addChild(playerScoreLabel)
     }
     
-    override func update(_ currentTime: TimeInterval) {
+    
+    func resetGame() {
+        scene?.isPaused = true
         
+        //display the game over label
+        let gameOverLabel = SKLabelNode()
+        gameOverLabel.fontName = "AvenirNext-Bold"
+        gameOverLabel.fontSize = 26
+        gameOverLabel.text = "Game over! Tap to retry!"
+        gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 40)
+        gameOverLabel.zPosition = 2
+        gameOverLabel.fontColor = UIColor(red: 181.0/255, green: 82.0/255, blue: 92.0/255, alpha: 1.0)
+        addChild(gameOverLabel)
     }
 }
 
@@ -213,8 +232,9 @@ extension GameScene : SKPhysicsContactDelegate {
             print("point scored!")
             playerScore += 1
         } else {
-            print("game over")
-            scene?.isPaused = true
+            pipeGenerationTimer.invalidate()
+            isGameActive = false
+            resetGame()
         }
         
     }
