@@ -26,6 +26,7 @@ class GameScene: SKScene {
             playerScoreLabel.text = "\(playerScore)"
         }
     }
+    var playerHighScore: Int = 0
     
     //MARK:- Collision properties
     let birbCategory: UInt32 = 0x1 << 1 //1
@@ -43,6 +44,10 @@ class GameScene: SKScene {
     
     func initGameScene() {
         if isGameActive {
+            
+            if let currentHighScore = UserDefaults.standard.value(forKey: "playerHighScore") as? Int {
+                playerHighScore = currentHighScore
+            }
             
             scene?.isPaused = false
             playerScore = 0
@@ -212,14 +217,23 @@ class GameScene: SKScene {
     func resetGame() {
         scene?.isPaused = true
         
-        //display the game over label
+        //display the game over label, with a background for additional styling
         let gameOverLabel = SKLabelNode()
+        //gameOverBackground.fillColor = UIColor(red: 181.0/255, green: 82.0/255, blue: 92.0/255, alpha: 1.0)
         gameOverLabel.fontName = "AvenirNext-Bold"
-        gameOverLabel.fontSize = 26
-        gameOverLabel.text = "Game over! Tap to retry!"
-        gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 40)
+        gameOverLabel.fontSize = 22
+    
+        if playerScore > playerHighScore {
+            gameOverLabel.text = "\(playerScore) points! New high score!"
+            UserDefaults.standard.set(playerScore, forKey: "playerHighScore")
+        } else {
+            gameOverLabel.text = "Game over! Tap to retry!"
+        }
+        
+        gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 40)
         gameOverLabel.zPosition = 2
-        gameOverLabel.fontColor = UIColor(red: 181.0/255, green: 82.0/255, blue: 92.0/255, alpha: 1.0)
+        gameOverLabel.fontColor = UIColor.white
+        
         addChild(gameOverLabel)
     }
 }
@@ -229,7 +243,6 @@ extension GameScene : SKPhysicsContactDelegate {
         
         if contact.bodyA.categoryBitMask == gapCategory || contact.bodyB.categoryBitMask == gapCategory {
             //score a point!
-            print("point scored!")
             playerScore += 1
         } else {
             pipeGenerationTimer.invalidate()
